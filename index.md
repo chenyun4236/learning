@@ -4,7 +4,7 @@ title: 学习笔记
 ---
 
 <div class="blog-container">
-  <!-- 主内容区（左侧） -->
+  <!-- 主内容区 -->
   <main class="blog-main">
     
     <header class="blog-header">
@@ -90,9 +90,6 @@ title: 学习笔记
 <style>
 /* 基础布局 */
 .blog-container {
-  display: grid;
-  grid-template-columns: 1fr 280px;
-  gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
   padding: 30px 20px;
@@ -100,7 +97,7 @@ title: 学习笔记
 
 /* 主内容区 */
 .blog-main {
-  min-width: 0;
+  width: 100%;
 }
 
 .blog-header {
@@ -268,148 +265,7 @@ title: 学习笔记
   text-decoration: underline;
 }
 
-/* 右侧边栏 */
-.blog-sidebar {
-  position: sticky;
-  top: 30px;
-  height: fit-content;
-}
-
-/* 侧边栏通用样式 */
-.sidebar-section {
-  background: #fff;
-  border: 1px solid #e8e8e8;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 25px;
-}
-
-.sidebar-section h3 {
-  margin: 0 0 15px 0;
-  font-size: 1.1em;
-  color: #333;
-  padding-bottom: 10px;
-  border-bottom: 1px solid #f0f0f0;
-}
-
-/* 网站信息 */
-.site-info {
-  font-size: 0.95em;
-  line-height: 1.6;
-}
-
-.site-info p {
-  margin: 8px 0;
-}
-
-/* 热门分类 */
-.popular-categories {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.popular-category {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 12px;
-  background: #f8f9fa;
-  border-radius: 6px;
-  text-decoration: none;
-  color: #333;
-  transition: all 0.2s ease;
-}
-
-.popular-category:hover {
-  background: #0366d6;
-  color: white;
-}
-
-.category-name {
-  font-size: 0.95em;
-}
-
-.category-count {
-  background: rgba(0,0,0,0.1);
-  padding: 2px 8px;
-  border-radius: 10px;
-  font-size: 0.85em;
-}
-
-.popular-category:hover .category-count {
-  background: rgba(255,255,255,0.2);
-}
-
-/* 归档 */
-.archives {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-}
-
-.archive-year {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 8px 12px;
-  color: #555;
-  text-decoration: none;
-  border-radius: 6px;
-  transition: all 0.2s ease;
-}
-
-.archive-year:hover {
-  background: #f0f7ff;
-  color: #0366d6;
-}
-
-.archive-year span {
-  color: #888;
-  font-size: 0.9em;
-}
-
-/* 标签云 */
-.tag-cloud {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.tag-item {
-  display: inline-block;
-  padding: 6px 12px;
-  background: #f6f8fa;
-  color: #555;
-  border-radius: 15px;
-  text-decoration: none;
-  font-size: 0.9em;
-  transition: all 0.2s ease;
-  border: 1px solid #e1e4e8;
-}
-
-.tag-item:hover {
-  background: #0366d6;
-  color: white;
-  border-color: #0366d6;
-  transform: translateY(-2px);
-}
-
 /* 响应式设计 */
-@media (max-width: 992px) {
-  .blog-container {
-    grid-template-columns: 1fr;
-    gap: 30px;
-  }
-  
-  .blog-sidebar {
-    position: static;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
-  }
-}
-
 @media (max-width: 768px) {
   .blog-container {
     padding: 20px 15px;
@@ -423,18 +279,24 @@ title: 学习笔记
     padding: 20px;
   }
   
-  .sidebar-section {
-    padding: 15px;
-  }
-}
-
-@media (max-width: 480px) {
   .blog-header h1 {
     font-size: 2em;
   }
   
   .post-title {
     font-size: 1.2em;
+  }
+}
+
+@media (max-width: 480px) {
+  .category-card {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .category-icon {
+    margin-right: 0;
+    margin-bottom: 10px;
   }
 }
 </style>
