@@ -85,66 +85,6 @@ title: 学习笔记
     </section>
     
   </main>
-  
-  <!-- 右侧边栏（简化版） -->
-  <aside class="blog-sidebar">
-    
-    <!-- 热门分类 -->
-    <div class="sidebar-section">
-      <h3>🏷️ 热门分类</h3>
-      <div class="popular-categories">
-        {% assign sorted_categories = site.categories | sort %}
-        {% for category in sorted_categories limit:8 %}
-        {% capture category_name %}{{ category | first }}{% endcapture %}
-        <a href="/learning/categories/{{ category_name | slugify }}/" class="popular-category">
-          <span class="category-name">{{ category_name }}</span>
-          <span class="category-count">{{ site.categories[category_name].size }}</span>
-        </a>
-        {% endfor %}
-      </div>
-    </div>
-    
-    <!-- 归档 -->
-    <div class="sidebar-section">
-      <h3>📅 文章归档</h3>
-      <div class="archives">
-        {% assign postsByYear = site.posts | group_by_exp:"post", "post.date | date: '%Y年'" %}
-        {% for year in postsByYear limit:5 %}
-        <a href="/learning/archive/#{{ year.name }}" class="archive-year">
-          {{ year.name }}
-          <span>({{ year.items.size }})</span>
-        </a>
-        {% endfor %}
-      </div>
-    </div>
-    
-    <!-- 标签云 -->
-    <div class="sidebar-section">
-      <h3>🔖 标签云</h3>
-      <div class="tag-cloud">
-        {% assign sorted_tags = site.tags | sort %}
-        {% for tag in sorted_tags limit:15 %}
-        {% capture tag_name %}{{ tag | first }}{% endcapture %}
-        <a href="/learning/tags/{{ tag_name | slugify }}/" class="tag-item">
-          {{ tag_name }}
-        </a>
-        {% endfor %}
-      </div>
-    </div>
-    
-    <!-- 网站信息（简洁版） -->
-    <div class="sidebar-section">
-      <h3>ℹ️ 网站信息</h3>
-      <div class="site-info">
-        <p>📚 <strong>技术学习笔记</strong></p>
-        <p>Linux | MySQL | PostgreSQL | C++ | 高等数学</p>
-        <p style="margin-top: 10px; font-size: 0.9em; color: #666;">
-          专注技术学习与分享
-        </p>
-      </div>
-    </div>
-    
-  </aside>
 </div>
 
 <style>
