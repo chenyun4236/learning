@@ -43,7 +43,7 @@ title: 学习笔记
           <span class="category-icon">⚡</span>
           <div>
             <h3>C++</h3>
-            <p>04737 C++/p>
+            <p>04737 C++</p>
           </div>
         </a>
         
