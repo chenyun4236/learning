@@ -1,0 +1,27 @@
+- name: 首页
+  link: /learning/
+
+- name: 分类
+  link: /learning/categories/
+  children:
+    - name: Linux
+      link: /learning/categories/linux/
+    - name: MySQL
+      link: /learning/categories/mysql/
+    - name: PostgreSQL
+      link: /learning/categories/postgresql/
+    - name: C++
+      link: /learning/categories/cpp/
+    - name: 高等数学
+      link: /learning/categories/math/
+    - name: 编程基础
+      link: /learning/categories/programming/
+
+- name: 标签
+  link: /learning/tags/
+
+- name: 归档
+  link: /learning/archive/
+
+- name: 关于
+  link: /learning/about/
