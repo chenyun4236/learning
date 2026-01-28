@@ -1,0 +1,23 @@
+- name: 首页
+  link: /
+- name: 分类
+  link: /categories/
+  children:
+    - name: Linux
+      link: /categories/linux/
+    - name: MySQL
+      link: /categories/mysql/
+    - name: PostgreSQL
+      link: /categories/postgresql/
+    - name: C++
+      link: /categories/cpp/
+    - name: 高等数学
+      link: /categories/math/
+    - name: 编程基础
+      link: /categories/programming/
+- name: 标签
+  link: /tags/
+- name: 归档
+  link: /archive/
+- name: 关于
+  link: /about/
