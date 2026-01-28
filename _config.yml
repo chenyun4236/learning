@@ -4,7 +4,7 @@ description: "Linux | MySQL | PostgreSQL | C++ | 高等数学 | 编程笔记"
 baseurl: "/learning"  # 你的仓库名
 url: "https://chenyun4236.github.io"
 author: "ChenYun"
-email: "你的邮箱@example.com"
+email: "chenyun4236@gmail.com"
 
 # 构建设置
 markdown: kramdown
