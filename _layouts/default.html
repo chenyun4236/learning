@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    {% include head.html %}
+    <title>
+        {% if page.title %}
+            {{ page.title }} | {{ site.title }}
+        {% else %}
+            {{ site.title }}
+        {% endif %}
+    </title>
+    <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+    
+    <!-- 自定义 CSS -->
+    <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+    
+    <!-- 导航菜单样式 -->
+    <style>
+    .site-nav {
+        background: #f8f9fa;
+        padding: 15px 0;
+        border-bottom: 1px solid #eaeaea;
+    }
+    
+    .nav-container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 0 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    
+    .nav-logo {
+        font-size: 1.5em;
+        font-weight: bold;
+        text-decoration: none;
+        color: #333;
+    }
+    
+    .nav-menu {
+        display: flex;
+        list-style: none;
+        margin: 0;
+        padding: 0;
+    }
+    
+    .nav-item {
+        position: relative;
+        margin-left: 25px;
+    }
+    
+    .nav-link {
+        text-decoration: none;
+        color: #555;
+        padding: 5px 10px;
+        border-radius: 4px;
+        transition: all 0.3s;
+    }
+    
+    .nav-link:hover {
+        background: #e9ecef;
+        color: #0366d6;
+    }
+    
+    .dropdown-menu {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background: white;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 10px 0;
+        min-width: 180px;
+        box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        z-index: 1000;
+    }
+    
+    .nav-item:hover .dropdown-menu {
+        display: block;
+    }
+    
+    .dropdown-item {
+        display: block;
+        padding: 8px 15px;
+        text-decoration: none;
+        color: #333;
+    }
+    
+    .dropdown-item:hover {
+        background: #f8f9fa;
+        color: #0366d6;
+    }
+    </style>
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="site-nav">
+        <div class="nav-container">
+            <a href="/learning/" class="nav-logo">{{ site.title }}</a>
+            
+            <ul class="nav-menu">
+                {% for item in site.data.navigation %}
+                <li class="nav-item">
+                    {% if item.children %}
+                    <a href="{{ item.link | relative_url }}" class="nav-link">
+                        {{ item.name }}
+                    </a>
+                    <div class="dropdown-menu">
+                        {% for child in item.children %}
+                        <a href="{{ child.link | relative_url }}" class="dropdown-item">
+                            {{ child.name }}
+                        </a>
+                        {% endfor %}
+                    </div>
+                    {% else %}
+                    <a href="{{ item.link | relative_url }}" class="nav-link">
+                        {{ item.name }}
+                    </a>
+                    {% endif %}
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </nav>
+
+    <!-- 主内容 -->
+    <main>
+        {{ content }}
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="site-footer">
+        <div style="text-align: center; padding: 20px; color: #666; font-size: 0.9em;">
+            <p>© {{ site.time | date: '%Y' }} {{ site.title }}. All rights reserved.</p>
+            <p>Powered by Jekyll & GitHub Pages</p>
+        </div>
+    </footer>
+</body>
+</html>
