@@ -4,364 +4,552 @@ title: 技术学习笔记
 description: 记录 Linux、数据库、C++、数学等学习笔记
 ---
 
-<div class="home-container">
-  <!-- 主内容区 -->
-  <main class="main-content">
+<div class="blog-container">
+  <!-- 主内容区（左侧） -->
+  <main class="blog-main">
     
-    <h1>📚 欢迎来到我的知识库</h1>
-    <p class="description">这里是我学习技术的笔记整理，涵盖多个技术领域。</p>
+    <header class="blog-header">
+      <h1>📚 技术学习笔记</h1>
+      <p class="blog-description">记录 Linux、数据库、C++、数学等学习笔记，持续更新中...</p>
+    </header>
+    
+    <section class="featured-categories">
+      <h2>📂 分类浏览</h2>
+      <div class="categories-grid">
+        <a href="/categories/linux/" class="category-card">
+          <span class="category-icon">🐧</span>
+          <div>
+            <h3>Linux</h3>
+            <p>系统命令、Shell脚本、运维知识</p>
+          </div>
+        </a>
+        
+        <a href="/categories/mysql/" class="category-card">
+          <span class="category-icon">🗄️</span>
+          <div>
+            <h3>MySQL</h3>
+            <p>数据库设计、SQL优化、事务管理</p>
+          </div>
+        </a>
+        
+        <a href="/categories/postgresql/" class="category-card">
+          <span class="category-icon">🐘</span>
+          <div>
+            <h3>PostgreSQL</h3>
+            <p>高级特性、JSONB、空间数据</p>
+          </div>
+        </a>
+        
+        <a href="/categories/cpp/" class="category-card">
+          <span class="category-icon">⚡</span>
+          <div>
+            <h3>C++</h3>
+            <p>语法特性、STL、并发编程</p>
+          </div>
+        </a>
+        
+        <a href="/categories/math/" class="category-card">
+          <span class="category-icon">📐</span>
+          <div>
+            <h3>高等数学</h3>
+            <p>微积分、线性代数、概率统计</p>
+          </div>
+        </a>
+      </div>
+    </section>
     
     <section class="recent-posts">
-      <h2>📈 最近更新</h2>
-      {% for post in site.posts limit:5 %}
-      <article class="post-item">
-        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+      <h2>📝 最新文章</h2>
+      {% for post in site.posts limit:10 %}
+      <article class="post-card">
         <div class="post-meta">
-          <time>{{ post.date | date: "%Y-%m-%d" }}</time>
-          <span class="categories">
+          <time datetime="{{ post.date | date_to_xmlschema }}">
+            {{ post.date | date: "%Y年%m月%d日" }}
+          </time>
+          <span class="post-categories">
             {% for category in post.categories %}
-            <a href="/categories/{{ category | slugify }}/">{{ category }}</a>
-            {% unless forloop.last %}·{% endunless %}
+            <a href="/categories/{{ category | slugify }}/" class="category-badge">{{ category }}</a>
             {% endfor %}
           </span>
         </div>
-        <p>{{ post.excerpt | strip_html | truncate: 120 }}</p>
+        <h3 class="post-title">
+          <a href="{{ post.url }}">{{ post.title }}</a>
+        </h3>
+        <p class="post-excerpt">
+          {{ post.excerpt | strip_html | truncate: 180 }}
+        </p>
+        <div class="post-footer">
+          <a href="{{ post.url }}" class="read-more">阅读全文 →</a>
+        </div>
       </article>
       {% endfor %}
-      <div class="view-all">
-        <a href="/archive/" class="btn">查看所有文章 →</a>
-      </div>
     </section>
     
   </main>
   
   <!-- 右侧边栏 -->
-  <aside class="sidebar">
+  <aside class="blog-sidebar">
     
-    <!-- 分类浏览 -->
-    <section class="sidebar-section">
-      <h3>📂 分类浏览</h3>
-      <div class="categories-list">
-        <a href="/categories/linux/" class="category-tag">
-          <span class="emoji">🐧</span> Linux
-          <small>系统命令、Shell脚本</small>
-        </a>
-        <a href="/categories/mysql/" class="category-tag">
-          <span class="emoji">🗄️</span> MySQL
-          <small>SQL优化、事务管理</small>
-        </a>
-        <a href="/categories/postgresql/" class="category-tag">
-          <span class="emoji">🐘</span> PostgreSQL
-          <small>JSONB、高级特性</small>
-        </a>
-        <a href="/categories/cpp/" class="category-tag">
-          <span class="emoji">⚡</span> C++
-          <small>STL、并发编程</small>
-        </a>
-        <a href="/categories/math/" class="category-tag">
-          <span class="emoji">📐</span> 高等数学
-          <small>微积分、线性代数</small>
-        </a>
+    <!-- 博主信息 -->
+    <div class="author-card">
+      <div class="author-header">
+        <h3>👨‍💻 关于作者</h3>
       </div>
-    </section>
-    
-    <!-- 站点信息 -->
-    <section class="sidebar-section">
-      <h3>ℹ️ 站点信息</h3>
-      <div class="site-info">
-        <div class="author">
-          <strong>ChenYun</strong>
-          <p>chenyun4236@gmail.com</p>
-        </div>
-        <div class="tags">
-          <span class="tag">Linux</span>
-          <span class="tag">MySQL</span>
-          <span class="tag">PostgreSQL</span>
-          <span class="tag">C++</span>
-          <span class="tag">高等数学</span>
-          <span class="tag">编程笔记</span>
-        </div>
-        <div class="subscribe">
-          <a href="/feed.xml" class="rss-link">
-            📡 订阅 RSS
-          </a>
-        </div>
+      <div class="author-info">
+        <div class="author-name">ChenYun</div>
+        <div class="author-bio">技术爱好者，专注于后端开发和系统架构</div>
+        <div class="author-contact">📧 chenyun4236@gmail.com</div>
       </div>
-    </section>
+      <div class="author-tags">
+        <span class="author-tag">Linux</span>
+        <span class="author-tag">MySQL</span>
+        <span class="author-tag">PostgreSQL</span>
+        <span class="author-tag">C++</span>
+        <span class="author-tag">数学</span>
+      </div>
+    </div>
     
-    <!-- 最新文章列表 -->
-    <section class="sidebar-section">
-      <h3>📝 最新文章</h3>
-      <ul class="post-list">
-        {% for post in site.posts limit:8 %}
-        <li>
-          <a href="{{ post.url }}">{{ post.title }}</a>
-          <time>{{ post.date | date: "%m-%d" }}</time>
-        </li>
+    <!-- 热门分类 -->
+    <div class="sidebar-section">
+      <h3>🏷️ 热门分类</h3>
+      <div class="popular-categories">
+        {% assign sorted_categories = site.categories | sort %}
+        {% for category in sorted_categories limit:8 %}
+        {% capture category_name %}{{ category | first }}{% endcapture %}
+        <a href="/categories/{{ category_name | slugify }}/" class="popular-category">
+          <span class="category-name">{{ category_name }}</span>
+          <span class="category-count">{{ site.categories[category_name].size }}</span>
+        </a>
         {% endfor %}
-      </ul>
-    </section>
+      </div>
+    </div>
+    
+    <!-- 归档 -->
+    <div class="sidebar-section">
+      <h3>📅 文章归档</h3>
+      <div class="archives">
+        {% assign postsByYear = site.posts | group_by_exp:"post", "post.date | date: '%Y年'" %}
+        {% for year in postsByYear limit:5 %}
+        <a href="/archive/#{{ year.name }}" class="archive-year">
+          {{ year.name }}
+          <span>({{ year.items.size }})</span>
+        </a>
+        {% endfor %}
+      </div>
+    </div>
+    
+    <!-- 标签云 -->
+    <div class="sidebar-section">
+      <h3>🔖 标签云</h3>
+      <div class="tag-cloud">
+        {% assign sorted_tags = site.tags | sort %}
+        {% for tag in sorted_tags limit:15 %}
+        {% capture tag_name %}{{ tag | first }}{% endcapture %}
+        <a href="/tags/{{ tag_name | slugify }}/" class="tag-item">
+          {{ tag_name }}
+        </a>
+        {% endfor %}
+      </div>
+    </div>
     
   </aside>
 </div>
 
 <style>
-/* 布局容器 */
-.home-container {
+/* 基础布局 */
+.blog-container {
   display: grid;
-  grid-template-columns: 1fr 300px;
+  grid-template-columns: 1fr 280px;
   gap: 40px;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 20px;
+  padding: 30px 20px;
 }
 
 /* 主内容区 */
-.main-content {
-  min-width: 0; /* 防止内容溢出 */
+.blog-main {
+  min-width: 0;
 }
 
-.main-content h1 {
-  font-size: 2.2em;
-  margin-bottom: 10px;
+.blog-header {
+  margin-bottom: 40px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #eaeaea;
 }
 
-.description {
+.blog-header h1 {
+  font-size: 2.4em;
+  margin: 0 0 10px 0;
+  color: #333;
+}
+
+.blog-description {
   color: #666;
   font-size: 1.1em;
-  margin-bottom: 40px;
+  line-height: 1.6;
+  margin: 0;
 }
 
-/* 文章列表 */
-.recent-posts {
-  margin-top: 40px;
+/* 分类浏览 */
+.featured-categories {
+  margin-bottom: 50px;
 }
 
-.post-item {
-  border-bottom: 1px solid #eee;
-  padding: 20px 0;
+.featured-categories h2 {
+  font-size: 1.6em;
+  margin-bottom: 20px;
+  color: #444;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
 }
 
-.post-item h3 {
-  margin: 0 0 8px 0;
-  font-size: 1.3em;
+.categories-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
 }
 
-.post-item h3 a {
-  color: #0366d6;
+.category-card {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
   text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
 }
 
-.post-item h3 a:hover {
-  text-decoration: underline;
+.category-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+  border-color: #0366d6;
+}
+
+.category-icon {
+  font-size: 2em;
+  margin-right: 15px;
+}
+
+.category-card h3 {
+  margin: 0 0 5px 0;
+  font-size: 1.2em;
+  color: #333;
+}
+
+.category-card p {
+  margin: 0;
+  color: #666;
+  font-size: 0.9em;
+  line-height: 1.4;
+}
+
+/* 文章卡片 */
+.recent-posts h2 {
+  font-size: 1.6em;
+  margin-bottom: 25px;
+  color: #444;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+.post-card {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  padding: 25px;
+  margin-bottom: 25px;
+  transition: all 0.3s ease;
+}
+
+.post-card:hover {
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+  border-color: #d0d7de;
 }
 
 .post-meta {
   display: flex;
   align-items: center;
-  gap: 15px;
-  color: #666;
+  margin-bottom: 12px;
   font-size: 0.9em;
-  margin-bottom: 10px;
+  color: #666;
 }
 
 .post-meta time {
   color: #888;
 }
 
-.categories a {
+.post-categories {
+  margin-left: 15px;
+}
+
+.category-badge {
+  display: inline-block;
+  padding: 3px 10px;
+  background: #f0f7ff;
   color: #0366d6;
+  border-radius: 12px;
+  font-size: 0.85em;
   text-decoration: none;
   margin-right: 5px;
 }
 
-.categories a:hover {
-  text-decoration: underline;
-}
-
-.view-all {
-  text-align: center;
-  margin-top: 30px;
-}
-
-.btn {
-  display: inline-block;
-  padding: 10px 25px;
+.category-badge:hover {
   background: #0366d6;
   color: white;
+}
+
+.post-title {
+  margin: 0 0 15px 0;
+  font-size: 1.4em;
+}
+
+.post-title a {
+  color: #333;
   text-decoration: none;
-  border-radius: 5px;
+}
+
+.post-title a:hover {
+  color: #0366d6;
+}
+
+.post-excerpt {
+  color: #555;
+  line-height: 1.6;
+  margin: 0 0 20px 0;
+}
+
+.post-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.read-more {
+  color: #0366d6;
+  text-decoration: none;
   font-weight: 500;
 }
 
-.btn:hover {
-  background: #0251b3;
+.read-more:hover {
+  text-decoration: underline;
 }
 
-/* 侧边栏 */
-.sidebar {
-  display: flex;
-  flex-direction: column;
-  gap: 30px;
+/* 右侧边栏 */
+.blog-sidebar {
+  position: sticky;
+  top: 30px;
+  height: fit-content;
 }
 
-.sidebar-section {
-  background: #f8f9fa;
-  border-radius: 10px;
+/* 博主信息卡片 */
+.author-card {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
   padding: 20px;
-  border: 1px solid #e9ecef;
+  margin-bottom: 25px;
 }
 
-.sidebar-section h3 {
-  margin-top: 0;
-  margin-bottom: 15px;
+.author-header h3 {
+  margin: 0 0 15px 0;
   font-size: 1.2em;
   color: #333;
 }
 
-/* 分类列表 */
-.categories-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.category-tag {
-  display: block;
-  padding: 12px 15px;
-  background: white;
-  border: 1px solid #e1e4e8;
-  border-radius: 8px;
-  text-decoration: none;
-  color: #24292e;
-  transition: all 0.2s ease;
-}
-
-.category-tag:hover {
-  background: #f6f8fa;
-  border-color: #0366d6;
-  transform: translateX(5px);
-}
-
-.category-tag .emoji {
-  margin-right: 8px;
-  font-size: 1.2em;
-}
-
-.category-tag small {
-  display: block;
-  color: #666;
-  font-size: 0.85em;
-  margin-top: 4px;
-}
-
-/* 站点信息 */
-.site-info {
-  font-size: 0.95em;
-}
-
-.author {
+.author-info {
   margin-bottom: 15px;
 }
 
-.author strong {
-  display: block;
+.author-name {
   font-size: 1.1em;
+  font-weight: 600;
   margin-bottom: 5px;
+  color: #222;
 }
 
-.author p {
+.author-bio {
   color: #666;
-  margin: 0;
+  font-size: 0.95em;
+  line-height: 1.4;
+  margin-bottom: 10px;
 }
 
-.tags {
+.author-contact {
+  color: #888;
+  font-size: 0.9em;
+}
+
+.author-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 5px;
-  margin: 15px 0;
+  gap: 8px;
 }
 
-.tag {
-  background: #e1e4e8;
+.author-tag {
+  padding: 4px 12px;
+  background: #f6f8fa;
   color: #24292e;
-  padding: 3px 8px;
-  border-radius: 12px;
+  border-radius: 15px;
   font-size: 0.85em;
+  border: 1px solid #e1e4e8;
 }
 
-.rss-link {
-  display: inline-block;
-  color: #ff6b35;
-  text-decoration: none;
-  font-weight: 500;
+/* 侧边栏通用样式 */
+.sidebar-section {
+  background: #fff;
+  border: 1px solid #e8e8e8;
+  border-radius: 8px;
+  padding: 20px;
+  margin-bottom: 25px;
 }
 
-.rss-link:hover {
-  text-decoration: underline;
+.sidebar-section h3 {
+  margin: 0 0 15px 0;
+  font-size: 1.1em;
+  color: #333;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #f0f0f0;
 }
 
-/* 文章列表 */
-.post-list {
-  list-style: none;
-  padding: 0;
-  margin: 0;
+/* 热门分类 */
+.popular-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
-.post-list li {
+.popular-category {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 8px 0;
-  border-bottom: 1px solid #eee;
-}
-
-.post-list li:last-child {
-  border-bottom: none;
-}
-
-.post-list a {
-  color: #0366d6;
+  padding: 8px 12px;
+  background: #f8f9fa;
+  border-radius: 6px;
   text-decoration: none;
-  flex: 1;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  margin-right: 10px;
+  color: #333;
+  transition: all 0.2s ease;
 }
 
-.post-list a:hover {
-  text-decoration: underline;
+.popular-category:hover {
+  background: #0366d6;
+  color: white;
 }
 
-.post-list time {
-  color: #888;
+.category-name {
+  font-size: 0.95em;
+}
+
+.category-count {
+  background: rgba(0,0,0,0.1);
+  padding: 2px 8px;
+  border-radius: 10px;
   font-size: 0.85em;
-  white-space: nowrap;
+}
+
+.popular-category:hover .category-count {
+  background: rgba(255,255,255,0.2);
+}
+
+/* 归档 */
+.archives {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.archive-year {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 12px;
+  color: #555;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+
+.archive-year:hover {
+  background: #f0f7ff;
+  color: #0366d6;
+}
+
+.archive-year span {
+  color: #888;
+  font-size: 0.9em;
+}
+
+/* 标签云 */
+.tag-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag-item {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #f6f8fa;
+  color: #555;
+  border-radius: 15px;
+  text-decoration: none;
+  font-size: 0.9em;
+  transition: all 0.2s ease;
+  border: 1px solid #e1e4e8;
+}
+
+.tag-item:hover {
+  background: #0366d6;
+  color: white;
+  border-color: #0366d6;
+  transform: translateY(-2px);
 }
 
 /* 响应式设计 */
 @media (max-width: 992px) {
-  .home-container {
+  .blog-container {
     grid-template-columns: 1fr;
     gap: 30px;
   }
   
-  .sidebar {
-    grid-row: 1;
+  .blog-sidebar {
+    position: static;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
   }
+  
+  .author-card {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (max-width: 768px) {
-  .home-container {
-    padding: 15px;
+  .blog-container {
+    padding: 20px 15px;
   }
   
-  .sidebar {
+  .categories-grid {
     grid-template-columns: 1fr;
+  }
+  
+  .post-card {
+    padding: 20px;
+  }
+  
+  .sidebar-section {
+    padding: 15px;
+  }
+}
+
+@media (max-width: 480px) {
+  .blog-header h1 {
+    font-size: 2em;
+  }
+  
+  .post-title {
+    font-size: 1.2em;
   }
 }
 </style>
