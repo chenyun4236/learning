@@ -1,7 +1,6 @@
 ---
 layout: home
-title: 技术学习笔记
-description: 记录 Linux、数据库、C++、数学等学习笔记
+title: 学习笔记
 ---
 
 <div class="blog-container">
@@ -16,7 +15,7 @@ description: 记录 Linux、数据库、C++、数学等学习笔记
     <section class="featured-categories">
       <h2>📂 分类浏览</h2>
       <div class="categories-grid">
-        <a href="/categories/linux/" class="category-card">
+        <a href="/learning/categories/linux/" class="category-card">
           <span class="category-icon">🐧</span>
           <div>
             <h3>Linux</h3>
@@ -24,7 +23,7 @@ description: 记录 Linux、数据库、C++、数学等学习笔记
           </div>
         </a>
         
-        <a href="/categories/mysql/" class="category-card">
+        <a href="/learning/categories/mysql/" class="category-card">
           <span class="category-icon">🗄️</span>
           <div>
             <h3>MySQL</h3>
@@ -32,7 +31,7 @@ description: 记录 Linux、数据库、C++、数学等学习笔记
           </div>
         </a>
         
-        <a href="/categories/postgresql/" class="category-card">
+        <a href="/learning/categories/postgresql/" class="category-card">
           <span class="category-icon">🐘</span>
           <div>
             <h3>PostgreSQL</h3>
@@ -40,7 +39,7 @@ description: 记录 Linux、数据库、C++、数学等学习笔记
           </div>
         </a>
         
-        <a href="/categories/cpp/" class="category-card">
+        <a href="/learning/categories/cpp/" class="category-card">
           <span class="category-icon">⚡</span>
           <div>
             <h3>C++</h3>
@@ -48,7 +47,7 @@ description: 记录 Linux、数据库、C++、数学等学习笔记
           </div>
         </a>
         
-        <a href="/categories/math/" class="category-card">
+        <a href="/learning/categories/math/" class="category-card">
           <span class="category-icon">📐</span>
           <div>
             <h3>高等数学</h3>
@@ -68,7 +67,7 @@ description: 记录 Linux、数据库、C++、数学等学习笔记
           </time>
           <span class="post-categories">
             {% for category in post.categories %}
-            <a href="/categories/{{ category | slugify }}/" class="category-badge">{{ category }}</a>
+            <a href="/learning/categories/{{ category | slugify }}/" class="category-badge">{{ category }}</a>
             {% endfor %}
           </span>
         </div>
@@ -87,27 +86,8 @@ description: 记录 Linux、数据库、C++、数学等学习笔记
     
   </main>
   
-  <!-- 右侧边栏 -->
+  <!-- 右侧边栏（简化版） -->
   <aside class="blog-sidebar">
-    
-    <!-- 博主信息 -->
-    <div class="author-card">
-      <div class="author-header">
-        <h3>👨‍💻 关于作者</h3>
-      </div>
-      <div class="author-info">
-        <div class="author-name">ChenYun</div>
-        <div class="author-bio">技术爱好者，专注于后端开发和系统架构</div>
-        <div class="author-contact">📧 chenyun4236@gmail.com</div>
-      </div>
-      <div class="author-tags">
-        <span class="author-tag">Linux</span>
-        <span class="author-tag">MySQL</span>
-        <span class="author-tag">PostgreSQL</span>
-        <span class="author-tag">C++</span>
-        <span class="author-tag">数学</span>
-      </div>
-    </div>
     
     <!-- 热门分类 -->
     <div class="sidebar-section">
@@ -116,7 +96,7 @@ description: 记录 Linux、数据库、C++、数学等学习笔记
         {% assign sorted_categories = site.categories | sort %}
         {% for category in sorted_categories limit:8 %}
         {% capture category_name %}{{ category | first }}{% endcapture %}
-        <a href="/categories/{{ category_name | slugify }}/" class="popular-category">
+        <a href="/learning/categories/{{ category_name | slugify }}/" class="popular-category">
           <span class="category-name">{{ category_name }}</span>
           <span class="category-count">{{ site.categories[category_name].size }}</span>
         </a>
@@ -130,7 +110,7 @@ description: 记录 Linux、数据库、C++、数学等学习笔记
       <div class="archives">
         {% assign postsByYear = site.posts | group_by_exp:"post", "post.date | date: '%Y年'" %}
         {% for year in postsByYear limit:5 %}
-        <a href="/archive/#{{ year.name }}" class="archive-year">
+        <a href="/learning/archive/#{{ year.name }}" class="archive-year">
           {{ year.name }}
           <span>({{ year.items.size }})</span>
         </a>
@@ -145,10 +125,22 @@ description: 记录 Linux、数据库、C++、数学等学习笔记
         {% assign sorted_tags = site.tags | sort %}
         {% for tag in sorted_tags limit:15 %}
         {% capture tag_name %}{{ tag | first }}{% endcapture %}
-        <a href="/tags/{{ tag_name | slugify }}/" class="tag-item">
+        <a href="/learning/tags/{{ tag_name | slugify }}/" class="tag-item">
           {{ tag_name }}
         </a>
         {% endfor %}
+      </div>
+    </div>
+    
+    <!-- 网站信息（简洁版） -->
+    <div class="sidebar-section">
+      <h3>ℹ️ 网站信息</h3>
+      <div class="site-info">
+        <p>📚 <strong>技术学习笔记</strong></p>
+        <p>Linux | MySQL | PostgreSQL | C++ | 高等数学</p>
+        <p style="margin-top: 10px; font-size: 0.9em; color: #666;">
+          专注技术学习与分享
+        </p>
       </div>
     </div>
     
@@ -343,59 +335,6 @@ description: 记录 Linux、数据库、C++、数学等学习笔记
   height: fit-content;
 }
 
-/* 博主信息卡片 */
-.author-card {
-  background: #fff;
-  border: 1px solid #e8e8e8;
-  border-radius: 8px;
-  padding: 20px;
-  margin-bottom: 25px;
-}
-
-.author-header h3 {
-  margin: 0 0 15px 0;
-  font-size: 1.2em;
-  color: #333;
-}
-
-.author-info {
-  margin-bottom: 15px;
-}
-
-.author-name {
-  font-size: 1.1em;
-  font-weight: 600;
-  margin-bottom: 5px;
-  color: #222;
-}
-
-.author-bio {
-  color: #666;
-  font-size: 0.95em;
-  line-height: 1.4;
-  margin-bottom: 10px;
-}
-
-.author-contact {
-  color: #888;
-  font-size: 0.9em;
-}
-
-.author-tags {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 8px;
-}
-
-.author-tag {
-  padding: 4px 12px;
-  background: #f6f8fa;
-  color: #24292e;
-  border-radius: 15px;
-  font-size: 0.85em;
-  border: 1px solid #e1e4e8;
-}
-
 /* 侧边栏通用样式 */
 .sidebar-section {
   background: #fff;
@@ -411,6 +350,16 @@ description: 记录 Linux、数据库、C++、数学等学习笔记
   color: #333;
   padding-bottom: 10px;
   border-bottom: 1px solid #f0f0f0;
+}
+
+/* 网站信息 */
+.site-info {
+  font-size: 0.95em;
+  line-height: 1.6;
+}
+
+.site-info p {
+  margin: 8px 0;
 }
 
 /* 热门分类 */
@@ -518,10 +467,6 @@ description: 记录 Linux、数据库、C++、数学等学习笔记
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 20px;
-  }
-  
-  .author-card {
-    grid-column: 1 / -1;
   }
 }
 
