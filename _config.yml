@@ -1,7 +1,7 @@
 # 站点设置
 title: "ChenYun的技术学习笔记"
 description: "Linux | MySQL | PostgreSQL | C++ | 高等数学 | 编程笔记"
-baseurl: "/learning"  # 你的仓库名
+baseurl: "/learning"
 url: "https://chenyun4236.github.io"
 author: "ChenYun"
 email: "chenyun4236@gmail.com"
@@ -12,13 +12,27 @@ highlighter: rouge
 permalink: /:categories/:title/
 timezone: Asia/Shanghai
 
-# 主题设置
+# 主题设置 - 重要修改！
 theme: minima
 minima:
-  skin: dark
-  social_links:
-    github: chenyun4236
+  skin: default  # 改为 default 而不是 dark
   date_format: "%Y-%m-%d"
+  
+  # 禁用所有默认小部件
+  show_header: false
+  show_footer: false
+  show_excerpts: false
+  show_related_posts: false
+  show_page_numbers: false
+  show_social_links: false
+  show_posts: false
+  
+  # 禁用默认边栏
+  sidebar:
+    enabled: false
+  
+  # 禁用默认布局
+  layout: default
   
 # 插件
 plugins:
@@ -52,6 +66,7 @@ collections:
     output: true
     permalink: /:path/
 
+# 重要：修改默认布局设置
 defaults:
   - scope:
       path: ""
@@ -60,10 +75,15 @@ defaults:
       layout: "post"
       comments: true
   - scope:
-      path: ""
-      type: "pages"
+      path: ""  # 所有文件
     values:
-      layout: "page"
+      layout: "default"  # 强制使用默认布局
+  - scope:
+      path: "index.md"  # 特别指定首页
+    values:
+      layout: "default"  # 首页使用默认布局
+      title: "技术学习笔记"
+      description: "记录 Linux、数据库、C++、数学等学习笔记"
 
 # SEO
 twitter:
@@ -75,3 +95,15 @@ disqus:
 
 # Google Analytics（可选）
 google_analytics: UA-XXXXXXXXX-X
+
+# 添加 include 配置
+include:
+  - _pages
+  - _posts
+  - _layouts
+
+# 指定网站图标（可选）
+favicon: /assets/favicon.ico
+
+# 禁用不需要的功能
+future: false
