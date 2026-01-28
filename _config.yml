@@ -1,21 +1,77 @@
-title: "学习笔记"
-description: "我的知识库与学习记录"
-baseurl: "/learning"  # 仓库名
+# 站点设置
+title: "ChenYun的技术学习笔记"
+description: "Linux | MySQL | PostgreSQL | C++ | 高等数学 | 编程笔记"
+baseurl: "/learning"  # 你的仓库名
 url: "https://chenyun4236.github.io"
+author: "ChenYun"
+email: "你的邮箱@example.com"
 
-# 主题设置（使用 GitHub Pages 默认主题）
+# 构建设置
+markdown: kramdown
+highlighter: rouge
+permalink: /:categories/:title/
+timezone: Asia/Shanghai
+
+# 主题设置
 theme: minima
-
-# 导航
-navbar:
-  - title: 首页
-    url: /
-  - title: 文章
-    url: /articles/
-  - title: 关于
-    url: /about/
-
+minima:
+  skin: dark
+  social_links:
+    github: chenyun4236
+  date_format: "%Y-%m-%d"
+  
 # 插件
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
+  - jekyll-sitemap
+  - jekyll-paginate
+  - jekyll-archives
+
+# 分页
+paginate: 10
+paginate_path: "/page:num/"
+
+# 分类和标签
+jekyll-archives:
+  enabled:
+    - categories
+    - tags
+  layout: archive
+  permalinks:
+    category: '/categories/:name/'
+    tag: '/tags/:name/'
+
+# 数学公式支持
+mathjax: true
+mathjax_autoNumber: true
+
+# 自定义变量
+collections:
+  pages:
+    output: true
+    permalink: /:path/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      comments: true
+  - scope:
+      path: ""
+      type: "pages"
+    values:
+      layout: "page"
+
+# SEO
+twitter:
+  username: chenyun4236
+
+# 评论系统（可选）
+disqus:
+  shortname: chenyun-learning
+
+# Google Analytics（可选）
+google_analytics: UA-XXXXXXXXX-X
