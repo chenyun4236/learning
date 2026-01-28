@@ -9,73 +9,29 @@ email: "chenyun4236@gmail.com"
 # 构建设置
 markdown: kramdown
 highlighter: rouge
-permalink: /:categories/:title/
+permalink: /:categories/:title/  # 保持这个
 timezone: Asia/Shanghai
 
-# 重要修改：禁用 Minima 主题的所有默认部件
+# 主题设置
 theme: minima
-
-# 完全覆盖 Minima 主题设置
 minima:
-  # 禁用所有布局部件
-  layout: "default"
-  
-  # 禁用所有显示部件
-  show_header: false
-  show_footer: false
-  show_excerpts: false
-  show_related_posts: false
-  show_page_numbers: false
-  show_social_links: false
-  show_posts: false
-  
-  # 禁用边栏
-  sidebar:
-    enabled: false
-  
-  # 禁用导航
-  navigation: false
-  
-  # 禁用站点标题
-  site_title: false
-  
-  # 禁用默认样式
-  skin: "none"
-  
-  # 自定义日期格式
+  skin: "classic"
   date_format: "%Y-%m-%d"
+  show_excerpts: false
 
-# 插件
+# 插件 - 移除 jekyll-archives，改用简单方法
 plugins:
   - jekyll-feed
   - jekyll-seo-tag
   - jekyll-sitemap
-  - jekyll-paginate
-  - jekyll-archives
 
 # 分页
 paginate: 10
 paginate_path: "/page:num/"
 
-# 分类和标签
-jekyll-archives:
-  enabled:
-    - categories
-    - tags
-  layout: archive
-  permalinks:
-    category: '/categories/:name/'
-    tag: '/tags/:name/'
-
 # 数学公式支持
 mathjax: true
 mathjax_autoNumber: true
-
-# 自定义变量
-collections:
-  pages:
-    output: true
-    permalink: /:path/
 
 # 重要：修改默认布局设置
 defaults:
@@ -84,30 +40,22 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      comments: true
+      permalink: /:categories/:title/
   - scope:
-      path: ""  # 所有文件
+      path: ""
+      type: "pages"
     values:
-      layout: "custom"  # 使用自定义布局，而不是 default
+      layout: "page"
   - scope:
-      path: "index.md"  # 首页特别处理
+      path: "index.md"
     values:
-      layout: "custom"  # 首页使用自定义布局
-      title: "技术学习笔记"
-      description: "记录 Linux、数据库、C++、数学等学习笔记"
-
-# SEO
-twitter:
-  username: chenyun4236
+      layout: "custom"
 
 # 添加 include 配置
 include:
   - _includes
   - _layouts
+  - _pages
 
 # 禁用不需要的功能
 future: false
-
-# 添加自定义头部（可选）
-header_pages:
-  - index.md
