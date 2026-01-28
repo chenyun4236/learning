@@ -1,3 +1,21 @@
+title: "学习笔记"
+description: "我的知识库与学习记录"
+baseurl: "/learning"  # 仓库名
+url: "https://chenyun4236.github.io"
+
+# 主题设置（使用 GitHub Pages 默认主题）
 theme: minima
-markdown: kramdown
-mathjax: true
+
+# 导航
+navbar:
+  - title: 首页
+    url: /
+  - title: 文章
+    url: /articles/
+  - title: 关于
+    url: /about/
+
+# 插件
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
