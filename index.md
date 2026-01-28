@@ -1,5 +1,5 @@
 ---
-layout: home
+layout: custom
 title: 学习笔记
 ---
 
