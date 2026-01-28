@@ -12,13 +12,15 @@ highlighter: rouge
 permalink: /:categories/:title/
 timezone: Asia/Shanghai
 
-# 主题设置 - 重要修改！
+# 重要修改：禁用 Minima 主题的所有默认部件
 theme: minima
+
+# 完全覆盖 Minima 主题设置
 minima:
-  skin: default  # 改为 default 而不是 dark
-  date_format: "%Y-%m-%d"
+  # 禁用所有布局部件
+  layout: "default"
   
-  # 禁用所有默认小部件
+  # 禁用所有显示部件
   show_header: false
   show_footer: false
   show_excerpts: false
@@ -27,13 +29,22 @@ minima:
   show_social_links: false
   show_posts: false
   
-  # 禁用默认边栏
+  # 禁用边栏
   sidebar:
     enabled: false
   
-  # 禁用默认布局
-  layout: default
+  # 禁用导航
+  navigation: false
   
+  # 禁用站点标题
+  site_title: false
+  
+  # 禁用默认样式
+  skin: "none"
+  
+  # 自定义日期格式
+  date_format: "%Y-%m-%d"
+
 # 插件
 plugins:
   - jekyll-feed
@@ -77,11 +88,11 @@ defaults:
   - scope:
       path: ""  # 所有文件
     values:
-      layout: "default"  # 强制使用默认布局
+      layout: "custom"  # 使用自定义布局，而不是 default
   - scope:
-      path: "index.md"  # 特别指定首页
+      path: "index.md"  # 首页特别处理
     values:
-      layout: "default"  # 首页使用默认布局
+      layout: "custom"  # 首页使用自定义布局
       title: "技术学习笔记"
       description: "记录 Linux、数据库、C++、数学等学习笔记"
 
@@ -89,21 +100,14 @@ defaults:
 twitter:
   username: chenyun4236
 
-# 评论系统（可选）
-disqus:
-  shortname: chenyun-learning
-
-# Google Analytics（可选）
-google_analytics: UA-XXXXXXXXX-X
-
 # 添加 include 配置
 include:
-  - _pages
-  - _posts
+  - _includes
   - _layouts
-
-# 指定网站图标（可选）
-favicon: /assets/favicon.ico
 
 # 禁用不需要的功能
 future: false
+
+# 添加自定义头部（可选）
+header_pages:
+  - index.md
