@@ -35,7 +35,7 @@ title: 学习笔记
           <span class="category-icon">🐘</span>
           <div>
             <h3>PostgreSQL</h3>
-            <p>高级特性、JSONB、空间数据</p>
+            <p>pg数据库学习</p>
           </div>
         </a>
         
@@ -43,7 +43,7 @@ title: 学习笔记
           <span class="category-icon">⚡</span>
           <div>
             <h3>C++</h3>
-            <p>语法特性、STL、并发编程</p>
+            <p>04737 C++/p>
           </div>
         </a>
         
@@ -51,7 +51,7 @@ title: 学习笔记
           <span class="category-icon">📐</span>
           <div>
             <h3>高等数学</h3>
-            <p>微积分、线性代数、概率统计</p>
+            <p>00023高等数学自考</p>
           </div>
         </a>
       </div>
