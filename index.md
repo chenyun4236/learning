@@ -24,7 +24,7 @@ title: 学习笔记
         </a>
         
         <a href="/learning/categories/mysql/" class="category-card">
-          <span class="category-icon">🗄️</span>
+          <span class="category-icon">🐬</span>
           <div>
             <h3>MySQL</h3>
             <p>数据库设计、SQL优化、事务管理</p>
