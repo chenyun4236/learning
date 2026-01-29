@@ -3,7 +3,7 @@
 # =====================
 title: "ChenYun的技术学习笔记"
 description: "Linux | MySQL | PostgreSQL | C++ | 高等数学 | 编程笔记"
-baseurl: "/learning"
+baseurl: "/learning"       # 项目站点路径
 url: "https://chenyun4236.github.io"
 
 author: "ChenYun"
@@ -52,12 +52,12 @@ mathjax_autoNumber: true
 # =====================
 defaults:
 
-  # 首页单独配置，防止 /learning/learning
+  # 首页单独配置，防止 /learning/learning/
   - scope:
       path: "index.md"
     values:
       layout: "custom"
-      permalink: "/"   # ✅ 首页始终指向 /learning/
+      permalink: "/"   # 首页永远指向 /learning/
 
   # 所有 posts
   - scope:
@@ -65,7 +65,7 @@ defaults:
       type: "posts"
     values:
       layout: "post"
-      permalink: /:categories/:title/
+      permalink: /:categories/:title/   # post 页面自动拼 baseurl
 
   # 所有其他 pages
   - scope:
