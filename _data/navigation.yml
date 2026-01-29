@@ -1,17 +1,24 @@
-- name: 首页
-  link: /
-
-- name: 分类
-  link: /learning/categories/
-  children:
-    - name: Linux
-      link: /learning/categories/linux/
-    - name: MySQL
-      link: /learning/categories/mysql/
-    - name: PostgreSQL
-      link: /learning/categories/postgresql/
-    - name: C++
-      link: /learning/categories/cpp/
-    - name: 高等数学
-      link: /learning/categories/math/
-
+# _data/navigation.yml
+main:
+  - name: "首页"
+    url: "/"
+  
+  - name: "分类"
+    url: "/categories/"
+    children:
+      - name: "Linux"
+        url: "/categories/linux/"
+      - name: "MySQL"
+        url: "/categories/mysql/"
+      - name: "PostgreSQL"
+        url: "/categories/postgresql/"
+      - name: "C++"
+        url: "/categories/cpp/"
+      - name: "高等数学"
+        url: "/categories/math/"
+  
+  - name: "归档"
+    url: "/archive/"
+  
+  - name: "关于"
+    url: "/about/"
