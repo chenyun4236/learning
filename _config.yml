@@ -1,9 +1,9 @@
 # =====================
 # 站点基本信息
 # =====================
-title: "ChenYun的技术学习笔记"
+title: "Forge ahead. 及时当勉励，岁月不待人。"
 description: "Linux | MySQL | PostgreSQL | C++ | 高等数学 | 编程笔记"
-baseurl: "/"       # 项目站点路径
+baseurl: "/learning"       # 项目站点路径
 url: "https://chenyun4236.github.io"
 
 author: "ChenYun"
