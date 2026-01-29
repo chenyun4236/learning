@@ -51,6 +51,15 @@ mathjax_autoNumber: true
 # 默认布局与 URL
 # =====================
 defaults:
+
+  # 首页单独配置，防止 /learning/learning
+  - scope:
+      path: "index.md"
+    values:
+      layout: "custom"
+      permalink: "/"   # ✅ 首页始终指向 /learning/
+
+  # 所有 posts
   - scope:
       path: ""
       type: "posts"
@@ -58,6 +67,7 @@ defaults:
       layout: "post"
       permalink: /:categories/:title/
 
+  # 所有其他 pages
   - scope:
       path: ""
       type: "pages"
